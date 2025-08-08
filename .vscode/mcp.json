@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "notes-mcp": {
+      "command": "node",
+      "args": ["mcp/server.ts"]
+    }
+  }
+}
