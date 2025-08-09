@@ -8,6 +8,7 @@
     "@modelcontextprotocol/sdk": "^1.17.2",
     "better-sqlite3": "^12.2.0",
     "glob-diff": "^0.0.1",
+    "gray-matter": "^4.0.3",
     "ollama": "^0.5.16",
     "prettier": "^3.6.2",
     "sqlite-vec": "0.1.7-alpha.2",

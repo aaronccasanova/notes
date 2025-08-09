@@ -135,7 +135,7 @@ server.registerTool(
         .describe('SQL query to execute (SELECT statements only)'),
     },
   },
-  async ({ query }: { query: string }) => {
+  async ({ query }) => {
     try {
       // Basic safety check - only allow SELECT statements
       const trimmedQuery = query.trim().toLowerCase()
@@ -195,7 +195,7 @@ server.registerTool(
         .describe('Maximum number of results to return (default: 5)'),
     },
   },
-  async ({ query, limit = 5 }: { query: string; limit?: number }) => {
+  async ({ query, limit = 5 }) => {
     try {
       // Generate embedding for the search query
       const embedResponse = await ollama.embed({
