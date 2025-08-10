@@ -19,7 +19,7 @@ server.registerTool(
   {
     title: 'Get Notes Database Schema',
     description:
-      'Returns the database schema including tables, columns, data types, and indexes',
+      'Introspect the personal notes knowledge base structure (tables, columns, indexes) before crafting other queries. Use to discover how notes, tags, chunks, and embeddings are organized so later SELECT or semantic searches can be more precise and aligned with user conventions (filenames, tagging patterns, chunk granularity). Returns full DDL plus column metadata.',
   },
   async () => {
     try {
@@ -128,7 +128,8 @@ server.registerTool(
   'query_notes_db',
   {
     title: 'Query Notes Database',
-    description: 'Execute read-only SQL queries against the notes database',
+    description:
+      'Run targeted read-only SQL (SELECT / WITH) over the personal notes knowledge base to retrieve structured info (e.g. list note file paths, filter by tag via joins, inspect chunk indices, surface titles/descriptions). Use when you need exact fields, relationships, or to ground actions in user-authored data rather than relying on inference. Mutations are blocked; returns JSON rows.',
     inputSchema: {
       query: z
         .string()
@@ -184,8 +185,7 @@ server.registerTool(
   'search_notes_db',
   {
     title: 'Search Notes Database',
-    description:
-      'Perform semantic search using vector embeddings to find relevant content',
+    description: `Semantic (embedding) search across all chunked note content (work, personal, style guides, preferences, boilerplates, code patterns). Use to quickly surface context, conventions, or examples to align responses and decisions with the user's established practices when exact SQL filtering is unnecessary or wording varies. Returns chunks with similarity scores.`,
     inputSchema: {
       query: z.string().describe('Natural language search query'),
       limit: z
